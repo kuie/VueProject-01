@@ -1,0 +1,37 @@
+/*const*/
+@blue: rgb(83, 161, 243);
+@mainHeaderHeight: 80px;
+
+/*method*/
+/*盒子*/
+.box(@height,@width:@height,@radius:0) {
+  width: @width;
+  height: @height;
+  vertical-align: middle;
+  border-radius: @radius;
+}
+
+/*参数控制水平或垂直局中，如未制定参数则全部剧中*/
+.center(@mode:'xy') {
+  position: absolute;
+  margin: auto;
+  .m('x') {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: auto;
+  }
+  .m('y') {
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: auto;
+  }
+  .m('xy') {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .m(@mode);
+}
