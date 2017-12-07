@@ -116,27 +116,6 @@
           }).catch(() => {
           alert('1231');
         });
-        /*new Promise((resolve, reject) => {
-          $.post({
-            url: 'http://127.0.0.1:8886/users/register',
-            dataType: 'jsonp',
-            data: this.loginForm,
-            complete(xhr, textStatus) {
-              //called when complete
-            },
-            success(data, textStatus, xhr) {
-              //called when successful
-              resolve(data);
-            },
-            error(xhr, textStatus, errorThrown) {
-              //called when there is an error
-              reject(xhr);
-            }
-          });
-        })
-          .then((data) => {
-            console.log(data);
-          });*/
       },
       login: function () {
         this.$router.replace({path: '/login'});
@@ -154,20 +133,14 @@
        * */
       getPCData: function () {
         let self = this;
-        $.post({
-          url: '/server/static/getProvinceList',
-          dataType: 'jsonp',
-          success(data) {
-            /**
-             * 获取省市数据
-             * 缓存到本地
-             * */
+        this.$axios('/api/static/getProvinceList', null)
+          .then((data) => {
             sessionStorage.setItem('pcData', JSON.stringify(data.provinces));
             self.provinceList = data.provinces.map((key, index) => {
               let pCode = index > 9 ? index + '' : '0' + index;
               return {name: key.provinceName, value: pCode};
             });
-          }
+          }).catch(() => {
         });
       }
     }

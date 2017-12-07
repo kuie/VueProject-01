@@ -93,12 +93,3 @@ module.exports = {
     server.close()
   }
 }
-
-/**
- * 接口路由,转为proxyTable控制的跨域请求
- * 规避vue中express被阉割导致的异步交互请求传送数据不可见的问题
- * */
-/*let user = require('../servers/user');
-let staticData = require('../servers/staticServer');
-app.use('/server/user', user);
-app.use('/server/static', staticData);*/
