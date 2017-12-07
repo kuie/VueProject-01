@@ -6,7 +6,6 @@ import App from './App.vue'
 import router from './router'
 import iView from 'iview'
 import axios from 'axios'
-import $ from 'jquery'
 
 Vue.use(iView);
 /**

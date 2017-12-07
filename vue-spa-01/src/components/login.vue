@@ -27,31 +27,14 @@
     },
     methods: {
       login: function () {
-        new Promise((resolve, reject) => {
-          $.post({
-            url: '/server/user/login',
-            data: {},
-            complete(xhr, textStatus) {
-              //交互完成
-            },
-            success(data, textStatus, xhr) {
-              //交互成功
-              resolve(data);
-            },
-            error(xhr, textStatus, errorThrown) {
-              //交互出错
-              reject(xhr);
-            }
-          });
-        })
-          .then((data) => {
-            alert(data);
-          }, (xhr) => {
-
+        this.$axios.post('/api/users/login')
+          .then((obj) => {
+            alert(obj.data);
+          })
+          .catch(() => {
           });
       },
       register: function () {
-        console.log('跳转去注册啦~~~');
         this.$router.replace({path: '/register'});
       }
     },

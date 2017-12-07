@@ -133,10 +133,11 @@
        * */
       getPCData: function () {
         let self = this;
-        this.$axios('/api/static/getProvinceList', null)
-          .then((data) => {
-            sessionStorage.setItem('pcData', JSON.stringify(data.provinces));
-            self.provinceList = data.provinces.map((key, index) => {
+        this.$axios.get('/api/static/getProvinceList')
+          .then((org) => {
+            let provinces = org.data.provinces;
+            sessionStorage.setItem('pcData', JSON.stringify(provinces));
+            self.provinceList = provinces.map((key, index) => {
               let pCode = index > 9 ? index + '' : '0' + index;
               return {name: key.provinceName, value: pCode};
             });

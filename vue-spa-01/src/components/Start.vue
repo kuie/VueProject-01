@@ -66,60 +66,25 @@
         console.log(zp_field.showJob());
         console.log(zp_field);
         console.log(worker.doSomeThing(Math.random() * 100));*/
-        new Promise((resolve, reject) => {
-          /*ajax请求*/
-          $.post({
-            url: '/server/user/register',
-            data: {uid: '312'},
-            complete(xhr, textStatus) {
-              //called when complete
-            },
-            success(data, textStatus, xhr) {
-              //called when successful
-              resolve(data);
-            },
-            error(xhr, textStatus, errorThrown) {
-              //called when there is an error
-              reject(xhr);
-            }
-          });
-        })
-          .then((data) => {
+        this.$axios.post('/api/users/register', {uid: '312'})
+          .then((obj) => {
+            let data = obj.data;
             this.todos.push({text: data});
             return data;
-          }, (xhr) => {
-//            throw xhr.responseText;
+          })
+          .catch((xhr) => {
             console.group('请求失败');
             console.log(xhr.statusText);
             console.groupEnd();
-          })
-          .then((data) => {
-          }, (xhr) => {
           });
       },
       login: function () {
-        new Promise((resolve, reject) => {
-          $.post({
-            url: '/server/user/login',
-            data: {},
-            complete(xhr, textStatus) {
-              //交互完成
-            },
-            success(data, textStatus, xhr) {
-              //交互成功
-              resolve(data);
-            },
-            error(xhr, textStatus, errorThrown) {
-              //交互出错
-              reject(xhr);
-            }
-          });
-        })
-          .then((data) => {
+        this.$axios.post('/api/users/login')
+          .then((obj) => {
+            let data = obj.data;
             this.todos.push({text: data})
-          }, (xhr) => {
-
-          });
+          })
+          .catch();
       }
     },
     components: {
