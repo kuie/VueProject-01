@@ -1,9 +1,9 @@
 let path = require('path');
 let fs = require('fs');
-let utils = require('./utils')
-let config = require('../config')
-let vueLoaderConfig = require('./vue-loader.conf')
-let webpack = require('webpack')
+let utils = require('./utils');
+let config = require('../config');
+let vueLoaderConfig = require('./vue-loader.conf');
+let webpack = require('webpack');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)

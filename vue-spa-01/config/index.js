@@ -1,7 +1,14 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
+let path = require('path');
 
 module.exports = {
+  /**
+   * 打包设置：
+   * 设置打包规则
+   * 源码map
+   * 生产环境代码压缩
+   * 压缩文件扩展名数组
+   * */
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
@@ -21,6 +28,12 @@ module.exports = {
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
   },
+  /**
+   * 开发设置：
+   * 运行端口
+   * 自动打开浏览器
+   * 代理服务器设置
+   * */
   dev: {
     env: require('./dev.env'),
     port: 8888,
@@ -43,4 +56,4 @@ module.exports = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
   }
-}
+};
