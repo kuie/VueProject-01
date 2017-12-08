@@ -25,7 +25,8 @@
     "vue": "^2.4.2",
     "vue-loader": "^13.5.0",
     "vue-router": "^2.8.1",
-    "vue-style-loader": "^3.0.3"
+    "vue-style-loader": "^3.0.3",
+    "watchpack": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
