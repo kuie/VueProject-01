@@ -1,3 +1,4 @@
 .idea/*
 express-server-01/node_modules/*
 vue-spa-01/node_modules/*
+vue-spa-01/dist/*
