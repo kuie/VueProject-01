@@ -132,17 +132,33 @@
        * 获取服务器数据
        * */
       getPCData: function () {
-        let self = this;
+        let ws = new WebSocket('ws://localhost:8886');
+        ws.onmessage = function (e) {
+          console.log('_message');
+          console.log(e.data);
+        };
+        ws.onerror = function (err) {
+          console.log('_error');
+          console.log(err);
+        };
+        ws.onopen = function () {
+          console.log('_connect');
+        };
+        ws.onclose = function () {
+          console.log('_close');
+        };
+        ws.send('data');
         this.$axios.get('/api/static/getProvinceList')
           .then((org) => {
             let provinces = org.data.provinces;
             sessionStorage.setItem('pcData', JSON.stringify(provinces));
-            self.provinceList = provinces.map((key, index) => {
+            this.provinceList = provinces.map((key, index) => {
               let pCode = index > 9 ? index + '' : '0' + index;
               return {name: key.provinceName, value: pCode};
             });
-          }).catch(() => {
-        });
+          })
+          .catch(() => {
+          });
       }
     }
   }
