@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import iView from 'iview'
 import axios from 'axios'
+import echarts from 'echarts';
 
 /**
  * 生产模式下调整为false 调试模式下打开
@@ -15,6 +16,8 @@ Vue.config.devtools = true;
  * */
 Vue.use(iView);
 import 'iview/dist/styles/iview.css';
+/*echarts图表*/
+Vue.use(echarts);
 
 /**
  * 设置proxyTable为后期的跨域请求做准备
